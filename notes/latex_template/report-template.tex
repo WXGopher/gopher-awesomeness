@@ -1,0 +1,102 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Use the koma-script document style
+\documentclass{scrbook}
+\KOMAoptions{twoside=false} % disable two-side formatting for scrbook
+% alternatively, for shorter essay, use the following
+% \documentclass{scrartcl}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Useful packages
+\usepackage{mathtools}
+\usepackage{amssymb,bm,bbold}
+\usepackage{enumerate}
+
+%--------------------------------------------------------------------
+% Hyper ref
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\newcommand\myshade{90}
+\colorlet{mylinkcolor}{NavyBlue}
+\colorlet{mycitecolor}{Aquamarine}
+\colorlet{myurlcolor}{Aquamarine}
+
+\hypersetup{
+  linkcolor  = mylinkcolor!\myshade!black,
+  citecolor  = mycitecolor!\myshade!black,
+  urlcolor   = myurlcolor!\myshade!black,
+  colorlinks = true,
+}
+
+%--------------------------------------------------------------------
+% Bibliography
+\usepackage[]{natbib}
+\bibliographystyle{chicago}
+
+%=================================
+% pre-defined theorem environments
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{assumption}{Assumption}
+
+%=================================
+% useful commands
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\supp}{supp}
+
+\def\vec#1{{\ensuremath{\bm{{#1}}}}}
+\def\mat#1{\vec{#1}}
+
+%=================================
+% convenient notations
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\PP}{\mathbb{P}}
+
+\newcommand{\bx}{\mathbf{x}}
+
+\newcommand{\sL}{\mathcal{L}}
+\newcommand{\sX}{\mathcal{X}}
+\newcommand{\sY}{\mathcal{Y}}
+
+\newcommand{\ind}{\mathbb{1}}
+
+\newcommand{\realR}{\mathbb{R}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Typography, change document font
+\usepackage[tt=false, type1=true]{libertine}
+\usepackage[varqu]{zi4}
+\usepackage[libertine]{newtxmath}
+\usepackage[T1]{fontenc}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+% Disable paragraph indentation, and increase gap
+\usepackage{parskip}
+
+
+\title{Title}
+\author{pluskid}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+
+
+
+
+%\bibliography{bibfile}
+
+\end{document}

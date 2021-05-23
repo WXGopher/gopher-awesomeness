@@ -1,0 +1,163 @@
+\documentclass{fancydoc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{todonotes}
+%\hypersetup{
+%	colorlinks=true,
+%	linkcolor=blue,
+%	filecolor=magenta,      
+%	urlcolor=cyan,
+%}
+
+\newtheorem{mydef}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{note}{Note}
+\newtheorem{ex}{Example}
+
+\newcommand{\trans}{\mathrm{T}}
+\newcommand{\diffd}{\mathrm{d}}
+\newcommand{\realR}{\rm I\!R}
+\newcommand{\tr}{\mathrm{tr}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\begin{document}
+
+\title{Random Notes}
+\author{wxgopher}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\dotfill
+
+
+\section{Coordinate system transformation}
+Notations:
+
+Local coordinate system is denoted by $C_L$, and global~(world) coordinate system is denoted by $C_W$.
+
+We define 
+\begin{equation}
+C_L = \begin{pmatrix}
+e_1 & e_2 & e_3 & 0 \\
+    &  0  &    & 1
+\end{pmatrix} \in \realR^{4\times 4},
+\end{equation}
+which translates a homogeneous coordinate $x_L$ in $C_L$ to $x_W$ in $C_W$.
+
+In $C_L$, we define two transformations~(rotation, translation, scaling) $T_1^L,T_2^L\in \realR^{4\times 4}$ of {\bf local coordinate system $C_L$ w.r.t. global coordinate system $C_W$}, and $T_1$ is applied before $T_2$. It's easy to derive in world space $C_W$, $T_1^{W\mapsto W} = C_L T_1^L C_L^{-1}$, and this is a mapping from global coordinate to global coordinate. Similarly, $T_1^{L\mapsto W} = T_1^{W\mapsto W} C_L = C_L T_1^L$.
+
+Consider combining these transformations, we have (this time $C_L$ is actually $C_LT_1^L$, because we've moved our local coordinate system)
+\begin{equation}
+T_2\circ T_1 \equiv (T_2\circ T_1)^{L\mapsto W} = (C_L T_1^L) T_2 (C_L T_1^L)^{-1} C_L T_1^L = C_L T_1^L T_2^L,
+\end{equation}
+and to be clear, this mapping is applied on local coordinate system and produce global coordinate.
+
+
+\section{Simple linear elasticity and implementation}
+We use a variant of classical linear elasticity:
+
+\begin{equation}
+E(x) = \sum_t\frac{\mu}{2} \Vert D_s - D_m \Vert^2_\mathrm{F}
+\end{equation}
+
+where $D_s$ and $D_m$ are shape matrices, $D_m$ is a constant matrix, $D_s = G_t \cdot x$ where $G_t$ is a linear mapping (tensor) . Let $x = (x_1, x_2, \cdots, x_n)^\mathrm{T} \in \realR^{3n}$. We denote restpose with $x_m$ and deformed pose with $x_s$.
+
+If we are to use a general optimizer like LBFGS (implemented in master branch), we need the gradient:
+
+\begin{equation}
+\nabla E(x_i) = \tr\left[(D_s - D_m)^{\mathrm{T}} \cdot \frac{\partial D_s}{\partial x_i}\right]
+\end{equation}
+
+The constraints is given by fixed boundaries on certain DoFs.
+
+\subsection{Quadratic minimization}
+Since $E$ is a quadratic form, we can convert this problem to a quadratic minimization. This is done as follows:
+
+For every tet, we define $vec(D_{s}) = S_t \otimes I_3 \cdot x_s = Gx_s \in \realR^{9 \times 1}$, where $S_t$ is a selector matrix, defined by: $S_{t, ij} = 1$ iff $i = 1,2,3$ and $j$ is the index of that point, and $S_{t, ij} = -1$ iff $i=4$ and $j$ is the index of that point.
+
+$G$ is a $9\times3n$ matrix, and $vec$ is a vectorization denoted as $vec((a_1, a_2, \cdots, a_n)) = (a_1, a_2, \cdots, a_n)^{\mathrm{T}}$.
+
+Also note that $\tr(AB) = \tr(BA)$, $\tr(A+B) = \tr(A)+ \tr(B)$, and $\tr(A^{\mathrm{T}}) = \tr(A)$, then
+
+\begin{subequations}
+	\begin{align}
+	 E(x) &= \sum \frac{\mu}{2} \Vert D_s - D_m \vert^2_F = \sum \frac{\mu}{2} \cdot \tr((D_s - D_m)\cdot(D_s - D_m)^\mathrm{T}) \newline \\
+	 &= \sum \frac{\mu}{2}  \tr(D_s^{\mathrm{T}}D_s - 2D_s^{\mathrm{T}}D_m +D_mD_m^{\mathrm{T}}) 
+	\end{align}
+\end{subequations}
+It's easy to derive:
+\begin{subequations}
+\begin{align}
+\tr (D_s^\mathrm{T}D_s)& = x^\mathrm{T}G^\mathrm{T}Gx,\\
+\tr(D_s^\mathrm{T} D_m) &= x^\mathrm{T}G^\mathrm{T} \cdot vec(D_m)= x^\mathrm{T}G^\mathrm{T} Gx_m.
+\end{align}
+\end{subequations}
+Thus we have
+\begin{equation}
+E(x) =\frac{1}{2} x^\mathrm{T}Ax - x^\mathrm{T} b + c,
+\end{equation}
+where
+\begin{subequations}
+	\begin{align}
+	A &= \mu\sum G^\mathrm{T}G \geq 0, \\
+	 b& =\mu \sum G^\mathrm{T} Gx_m, \\
+	  c &= \frac{\mu}{2} \sum \tr(D_mD_m^\mathrm{T}).
+	\end{align}
+\end{subequations}
+
+The stationary point of $E$ can be obtained by solving $ Ax = b$.
+
+\subsection{Constraints}
+Two ways to impose $m$ constraints:
+
+The constraint can be written as $Qx=q \Rightarrow x^{\mathrm{T}}Q^{\mathrm{T}} - q^{\mathrm{T}}=0$, where $Q\in R^{3m \times 3n}$, $q\in R^{3m \times 1}$, $m \leq n$.
+
+\subsubsection{Soft constraints}
+Let $w$ become a constraint parameter, the objective becomes
+\begin{equation}
+E(x) =\frac{1}{2}x^{\mathrm{T}}A x - x^{\mathrm{T}} b +c + w(x^{\mathrm{T}}Q^{\mathrm{T}}Qx - 2x^{\mathrm{T}}Q^{\mathrm{T}}q + q^{\mathrm{T}}q).
+\end{equation}
+The final linear system to minimize $E$ becomes solving
+\begin{equation}
+ ( A + 2wQ^{\mathrm{T}}Q)x = b + 2 wQ^{\mathrm{T}}q.
+\end{equation}
+
+\subsubsection{Lagrangian multipliers}
+The Lagrangian of $E$ is
+\begin{equation}
+ L(x, \lambda) = \frac{1}{2} x^\mathrm{T}Ax - b^\mathrm{T}x + c + \lambda^{\mathrm{T}}(Qx - q) \newline = \frac{1}{2} x^\mathrm{T}Ax + ( \lambda^\mathrm{T} Q -b^\mathrm{T})x + c-\lambda^\mathrm{T}q.
+\end{equation}
+
+Let
+\begin{equation}
+\frac{\partial L}{\partial x} = Ax + Q^{\mathrm{T}}\lambda - b = 0.
+\end{equation}
+Hence the dual form of the problem:
+\begin{equation}
+\begin{pmatrix} A&Q^{\mathrm{T}} \\ Q & 0 \end{pmatrix} \cdot \begin{pmatrix} x\\ \lambda \end{pmatrix} = 
+\begin{pmatrix} b \\ q \end{pmatrix} 
+\end{equation}
+Tips for implementation:
+Creating sparse matrices in a loop is costly. An efficient evaluation of $A$:
+\begin{equation}
+ A = \mu \sum_i (G^{\mathrm{T}}_iG_i) \newline = \sum_i (S_i \otimes I_3)^\mathrm{T}(S_i \otimes I_3) \newline = (\sum_i S^\mathrm{T}_i S_i) \otimes I_3.
+\end{equation}
+
+Precomputing $(\sum_i S^\mathrm{T}_i S_i)$ can be done via coo\_matrix (in scipy) on $(i,j,k)$ tuples.
+
+\section{Position-based Dynamics~(PBD) related}
+
+\subsection{Angle-based triangle bending constraint}
+
+Just came across an implementation in $\mathrm{Magica}$~(a Unity plugin).
+
+\bibliographystyle{plain}
+\bibliography{bib.bib} 
+
+\end{document}

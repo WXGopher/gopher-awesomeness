@@ -1,0 +1,580 @@
+\documentclass{fancydoc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{todonotes}
+%\hypersetup{
+%	colorlinks=true,
+%	linkcolor=blue,
+%	filecolor=magenta,      
+%	urlcolor=cyan,
+%}
+
+\newtheorem{mydef}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{note}{Note}
+\newtheorem{ex}{Example}
+
+\newcommand{\trans}{\mathrm{T}}
+\newcommand{\diffd}{\mathrm{d}}
+\newcommand{\realR}{\rm I\!R}
+\newcommand{\tr}{\rm tr}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\begin{document}
+
+\title{Physics-based Animation: A Mathematical Perspective}
+\author{Based on Ladislav Kavan's CS6660 with annotations from wxgopher}
+
+\maketitle
+\tableofcontents
+\newpage
+{\large This lecture note is based on Dr. Ladislav Kavan's Physics-based Animation course CS6660, originally taught at the University of Utah. I also try to include some supplementary materials from other resources.}
+
+
+{\large Warning: Although as I strive to make this material useful, there are certain bugs, use this material at your own risk. I would also be grateful to hear \href{mailto:wxguojlu@gmail.com}{feedbacks}.}
+
+\dotfill
+
+\section{Classical Mechanics}
+
+\subsection{Basics: a harmonic oscillator}
+
+\section{Time Integration}
+
+\section{Optimization}
+\subsection{Implicit Newmark}
+
+\begin{subequations}
+	\begin{align}
+	x_{n+1} &= x_n + \frac{h}{2}(v_n + v_{n+1}),\\
+	v_{n+1} &= v_n = \frac{h}{2}(f_n + f_{n+1}),
+	\end{align}
+\end{subequations}
+where $x$ and $v$ are positions and velocities, and $f_n \equiv f(x_n)$. Thus we have
+\begin{equation}\label{secoptim:nw_eq}
+x_{n+1} - x_n - hv_n = \frac{h^2}{4}(f_n + f_{n+1}).
+\end{equation}
+
+Let $y = x_n + h_nv_n + \frac{h^2}{4}f_n$, $x_{n+1} = x$, note that $\nabla E = -f$, then \eqref{secoptim:nw_eq} becomes
+
+\begin{equation}
+x - y = \frac{h^2}{4}f \Rightarrow x - y + \frac{h^2}{4}f\nabla E = 0.
+\end{equation}
+
+Let $g(x) = \frac{1}{2}\Vert x-y\vert^2 + \frac{h^2}{4}E$, then solving $g$ equals to solve $x$ for
+\begin{equation}
+\min_{x} \quad g(x).
+\end{equation}
+
+\subsection{Optimization Problems}
+Problem formulation:
+\begin{equation}\label{problem_optim_nonlinear}
+\min_{_x} \quad g(x), \quad x\in \!R^n, \quad g\in \!R.
+\end{equation}
+
+Optimization problems can be categorized into constrained or unconstrained problems, or convex or non-convex problems. 
+
+\begin{thm}
+	For a convex problem (where both objective and feasible set are convex), if the objective is $\!C^2$, then the Hessian $H \succeq 0$, and the local minimum is the global minimum.
+\end{thm}
+
+\begin{mydef}
+	A \textbf{linear programming (LP)} is a problem with linear objective and linear equality or inequality constraints. A \textbf{quadratic programming (QP)} is {\bf the same as LP} except with a quadratic objective.
+\end{mydef}
+
+\begin{note}
+	Convex QP has polynomial time solver but non-convex QP is NP-hard.
+\end{note}
+\begin{ex}
+	A non-convex QP: 
+	\begin{subequations}
+		\begin{align}
+		\min_{x} \quad&\frac{1}{2} \Vert Ax \Vert^2, \\
+		s.t. \quad & \Vert x \Vert_2 = 1.
+		\end{align}
+	\end{subequations}
+\end{ex}
+\begin{note}
+	Software package for solving non-convex problem: {\rm IpOPT}, {\rm KNITRO}, or \href{https://neos-guide.org/}{NEOS-Guide} 
+\end{note}
+
+\subsubsection{Solving unconstrained problems}
+There are two ways to solve an unconstrained problem: descent method or trust-region method.
+
+Descent method refers to pick a descent direction $d$ and do an exact or inexact line search~(LS) to determine descent distance $\alpha d$.
+\bigbreak
+\begin{mydef}
+	\textbf{Descent direction}: $\forall \alpha \in (0, \alpha_0)$, $\alpha_0 > 0$, $g(x+\alpha d) < g(x)$.
+\end{mydef}
+\begin{mydef}
+	\textbf{Exact LS} refers to solving the following problem:
+	\begin{equation*}
+	\argmin_{\alpha>0} g(x+\alpha d).
+	\end{equation*}
+\end{mydef}
+\todo[inline]{Backtracking LS}
+
+\subsubsection{Newton's method}
+A usual descent direction is called \textbf{gradient descent}~(GD), denoted by $d=-\nabla g$. It doesn't work well sometime, for example:
+\begin{ex}
+	\begin{equation}
+	\min_{x_1, x_2} g(x1, x2) = \frac{1}{2}(x_1^2 + \gamma x_2^2), \quad \gamma > 0.
+	\end{equation}
+\end{ex}
+If we do exact LS, we get
+\begin{subequations}
+\begin{align}
+x_1^k &= \gamma (\frac{\gamma - 1}{\gamma + 1})^k, \\
+x_2^k &= (-\frac{\gamma - 1}{\gamma + 1})^k.
+\end{align}
+\end{subequations}
+If gamma becomes huge, we can tell GD converges slowly (as two GD directions are perpendicular).
+\bigbreak 
+
+Newton's method refers to do a quadratic approximation to problem~\eqref{problem_optim_nonlinear}, given by
+\begin{equation}\label{newton_approximation}
+g(x + p) = g(x) + \nabla g^{\trans}(x)p + \frac{1}{2}p^\trans\nabla^2g(x)p + O(\Vert p\Vert^2) \equiv \tilde{g}(x) + O.
+\end{equation}
+Thus we have
+\begin{equation*}
+\frac{\partial \tilde{g}}{\partial p} = 0 \Longleftrightarrow \nabla g + \nabla^2 gp = 0.
+\end{equation*}
+The \textbf{Newton descent direction} is given by
+\begin{equation}\label{newton_descent_direction}
+p = -(\nabla^2g)^{-1}\nabla g.
+\end{equation}
+\bigbreak
+\begin{note}
+	Newton's method is affine invariant. Let $x=Ty$ with $T$ being a nonsingular matrix, so problem~\eqref{problem_optim_nonlinear} is equivalent to problem 
+	\begin{equation}
+	\min_{y} \tilde{g}(y).
+	\end{equation}
+	We also have 
+	\begin{equation*}
+	\nabla \tilde{g} = T^2 \nabla g, \quad \nabla^2 \tilde{g} = T^
+	\trans \nabla^2 g T.
+	\end{equation*}
+	Newton direction $\Delta y$ of $\tilde{g}$ and $\Delta x$ of $g$ is given by
+	\begin{equation*}
+	\Delta y = -T^{-1}\nabla^2 g \nabla g = T^{-1} \Delta x.
+	\end{equation*}
+\end{note}
+
+\begin{mydef}
+	\textbf{Newton decrement}: substitute Newton descent direction~\eqref{newton_descent_direction} into~\eqref{newton_approximation}, we get the \textbf{Newton decrement} 
+	\begin{equation}
+	\lambda^2 = g - \frac{1}{2}\nabla g^\trans(\nabla^2 g)^{-1}\nabla g.
+	\end{equation} 
+	A stopping criteria for Newton's method would be
+	\begin{equation*}
+	\frac{\lambda^2}{2} \leq \epsilon.
+	\end{equation*}
+	Note that Newton decrement is also affine invariant.
+\end{mydef}
+\bigbreak 
+
+Convergence analysis of the Newton's method is given as follows:
+\begin{thm}
+\textbf{Kantorovich}: if $g$ is strictly convex and $\nabla^2 g$ is Lipschitz continuous, then $\exists \epsilon > 0, \eta > 0, \gamma > 0$, s.t.
+\begin{description}
+	\item[Damped phase I] If $\Vert\nabla g \Vert \geq \eta$, then $\Vert g^{k+1} \Vert \leq \Vert g^{k} \Vert - \gamma$;
+	\item[Quadratic phase II] If $\Vert\nabla g \Vert < \eta$, then $\Vert g^{k+1} \Vert \leq c \Vert g^{k}\Vert^2$.
+\end{description}
+\end{thm}
+Some cases where Newton's method doesn't work well:
+\begin{enumerate}
+	\item If $g$ is highly nonlinear, the damped phase will be long;
+	\item If $g$ is non-convex, solution might not converge to a minimum.
+\end{enumerate}
+In practical implementations, the Hessian might not always be positive definite. A possible Hessian modification is:
+\begin{note}
+	\textbf{Hessian modification}: Consider $A = \nabla^2 g + cI$, where $c>0$. It is shown that if $\nabla^2 g = Q\Lambda Q^\trans$ ($\nabla^2 g$ is symmetric, hence it is always diagonalizable), then $A=Q(\Lambda + cI)Q^\trans$, hence $A$ is positive definite given sufficiently large $c>0$. 
+\end{note}
+
+Solving Newton's direction~\eqref{newton_descent_direction} refers to solving a linear system. We introduce several techniques to tackle this.
+
+\subsection{Numerical Linear Algebra}
+We consider solving a linear system $Ax = b$.
+\subsubsection{Direct solvers}
+We can prefactor $A$ into $A = UV^\trans$, with $U$ and $V$ being low rank matrices.
+
+Common factorization methods are
+\begin{description}
+	\item[LU] If $A$ is nonsingular, then there exist $L,P,U$, where they are lower-triangular matrix, permutation matrix (hence orthogonal), and upper-triangular matrix, respectively, s.t. $A=PLU$.
+	\item[Sparse LU] $A=P_1LUP_2$, where $P_1$ and $P_2$ are permutations to utilize sparse information of $A$.
+	\item[Cholesky] For symmetric positive-definite matrix, we have $A = LL^\trans$ with unique $L$. Note that for positive semi-definite matrix, Cholesky is not unique.
+\end{description}
+ \todo[inline]{LDLT}
+ 
+\subsubsection{Iterative solvers}
+Iterative solvers includes:
+\begin{enumerate}
+	\item Classical method: Jacobian, Gauss-Seidel, SOR~(super over-relaxation), etc.;
+	\item Krylov subspace method: CG~(conjugate gradient)\footnote{A good reference on CG is~\cite{shewchuk1994introduction}.}, GMRES~(generalized minimal residual), etc.;
+	\item multigrid method.
+\end{enumerate}
+
+\paragraph{Classical method}
+Suppose $P$ is easy to invert, let $A = P+A-P$, then
+\begin{equation*}
+Ax=b \quad \Leftrightarrow \quad Px = (P-A)x + b.
+\end{equation*} 
+$P = diag(A)$ gives us Jacobian method, and it's GPU-friendly; $P = lower(A)$ gives us GS method; $P = diag(A) + w\cdot lower(A)$ gives us SOR method where $w<2$.
+
+The residual term follows
+\begin{equation*}
+r_k \equiv A(x^\star - x_k) = b - Ax_k \quad \Leftrightarrow \quad r_{k+1} = (I-P^{-1}A)r_k.
+\end{equation*}
+To make classical method converge, we need $\rho(I - P^{-1}A) < 1$, where $\rho(\cdot)$ is the spectrum radius.
+
+\paragraph{Krylov subpace method}
+
+
+Assuming $A^\trans = A$ and $A \succeq 0$, then
+\begin{equation}\label{cg_form}
+\argmin_{x} g(x) = \frac{1}{2} x^\trans Ax - x^\trans b \quad \Leftrightarrow \quad solve\,\, Ax=b.
+\end{equation}
+Let $\nabla g_k = Ax_k - b = -r_k$\footnote{$Ax$ is computed on-fly, we don't need the whole $A$.} as a descent direction, the line search for~\eqref{cg_form} is as follows:
+\begin{enumerate}
+	\item Solve $\alpha$ from $\argmin_{\alpha} (\frac{1}{2} (x + \alpha r)^\trans A (x + \alpha r) - (x + \alpha r)^\trans b \equiv \frac{1}{2} \Vert x + \alpha r \Vert^2_{A} - (x+\alpha r)^\trans b)$ by letting $\frac{\partial E}{\partial \alpha} = 0$, where $E$ is the objective;
+	\item $\alpha$ follows $\alpha = -\frac{\Vert r \Vert^2}{\vert r \Vert^2_A}$;
+	\item $x_{k+1} = x_k + \alpha_k r_k$.
+\end{enumerate}
+This is the gist of CG from gradient descent.
+
+\subparagraph{CG}
+Assuming solving problem~\eqref{cg_form}.
+\begin{mydef}
+	\textbf{A-conjugate} A set of vectors $\{p_i\}$ are A-conjugate iff $\forall  i, j, i\neq j, p_i^\trans Ap_j = 0$.
+\end{mydef}
+The CG algorithm is as follows:
+\begin{enumerate}
+	\item We define $r_k = Ax_k - b$;
+	\item Let $p_1 = r_1$\footnote{$r_1$ is usually chosen as a GD step};
+	\item $p_k = r_k + \beta_k p_{k-1}, \beta_k = \frac{r_k^\trans Ap_{k-1}}{p_{k-1}^\trans Ap_{k-1}}$;
+	\item Do LS along direction $p_k$, we have $\alpha_k = \frac{r_k^\trans p_k}{p^\trans A p_k}$;
+	\item $x_{k+1} = x_k + \alpha_k p_k$.
+\end{enumerate}
+
+\subparagraph{Preconditioning CG}
+If $A$ is ill-conditioned, we consider adding preconditioner $M$ to $A$, s.t. $cond(MA) < cond(A)$.
+
+The Jacobian preconditioner is given by $M = diag(A)^{-1}$. The incomplete Cholesky is given by prefactoring $A$ into $L_a L_a^\trans$ where -$L_a$ is an approximation of $L$ of the Cholesky decomposition of $A$ given by $A=LL^\trans$.
+
+\section{Elastic Materials and Finite Element Simulation}
+\subsection{Kinetic energy}
+Consider kinetic energy 
+\begin{equation*}
+k = \frac{1}{2} v^\trans Mv.
+\end{equation*}
+Assuming unit mass, we have
+\begin{equation}
+k = \frac{1}{2} \int_\Omega \rho(p) \Vert v(p) \Vert^2 \diffd p,
+\end{equation}
+where $p \in \Omega$ is the material point. We discretize $\Omega$, and for every node $p_i$ we define piece-wise shape function $s_i : \Omega \mapsto [0, 1]$, s.t. $\sum_i s_i = 1$. For every region $E_t$, we also define
+\[r_t(p) = \begin{cases}
+1 & p\in E_t,\\
+0 & otherwise.
+\end{cases} 
+\]
+
+We have
+\begin{subequations}
+\begin{align}
+v(p) &=\sum_i v_i s_i(p), \\
+\rho(p) &= \sum_t \rho_t r_t(p).
+\end{align}
+\end{subequations}
+The kinetic energy follows
+\begin{subequations}
+	\begin{align}
+	k &= \frac{1}{2} \int_\Omega \sum_t \rho_t r_t \Vert v(p)\Vert^2 \diffd p\\
+	  &= \frac{1}{2} \sum_t \rho_t \int_\Omega r_t(p) \Vert v(p) \Vert^2 \diffd p\\
+	  &= \frac{1}{2} \sum_t \rho_t \int_{E_t} \Vert v \Vert^2 \diffd p \\
+	  &= \frac{1}{2} \sum_t \rho_t \sum_{i,j} v_i^\trans v_j \int_{E_t} s_i s_j \diffd p.\\
+	\end{align}
+\end{subequations}
+We define
+\begin{equation}
+\int_{E_t} s_i s_j \diffd p = s_{i, j}^t,
+\end{equation}
+for different methods of discretization, we have
+\begin{description}
+	\item[Triangal element~(2-dimension)] \[s^t_{i,j} = \begin{cases}
+	\frac{Area(t)}{6} & i = j, \\
+	\frac{Area(t)}{12} & i \neq j.
+	\end{cases}\]
+	\item[Tetrahderal element~(3-dimension)] \[s^t_{i,j} = \begin{cases}
+	\frac{Area(t)}{10} & i = j, \\
+	\frac{Area(t)}{20} & i \neq j.
+	\end{cases}\]
+\end{description}
+
+Let's consider practical implementation of FEM. From discussions above, we have
+\begin{subequations}
+	\begin{align}
+	\int_{E_t} \Vert v(p) \Vert^2 \diffd p &= \sum_{i, j}v_i^\trans v_j \int_{E_t} s_i s_j \diffd p\\
+	&= \sum_{i, j}v_i^\trans v_j  s^t_{i,j} \\ 
+	&= V^\trans S_t V,
+	\end{align}
+\end{subequations}
+where $V = (v_1, v_2, \cdots, v_n)^\trans$, and
+\begin{equation*}
+S_t = \begin{pmatrix}
+s_{1,1}^t \cdot I_3  & \cdots & s^t_{1,n} \cdot I_3 \\
+\vdots & \ddots & \vdots \\
+s_{n, 1}^t \cdot I_3 & \cdots & s^t_{n,n} \cdot I_3 \\
+\end{pmatrix}.
+\end{equation*}
+The kinetic energy follows
+\begin{subequations}
+	\begin{align}
+	k &= \frac{1}{2} \sum_t \rho_t (V^\trans S_t V) \\
+	  &= \frac{1}{2} V^\trans (\sum_t \rho_t S_t)V
+	\end{align}
+\end{subequations}
+We denote \textit{mass matrix} $M_t$ with $M_t = \sum_t \rho_t S_t$. For triangle element we have
+\begin{equation}
+M_t = \sum_t \rho_t S_t = \rho_t Area(t) P \otimes I_3,
+\end{equation}
+where $P$ is defined by 
+\[P_{m,n} = \begin{cases}
+\frac{1}{6} & m = n \in {i,j,k} \\
+\frac{1}{12} & m \neq n \in {i,j,k} \\
+0 & otherwise
+\end{cases},
+\] where $i, j$ and $k$ are triangle vertex indices\footnote{In practical implementation, sometimes the \textit{mass lumping} technique is used. This technique aggregates matrix element to its diagonal and to facilitate computations.}.
+
+\subsection{Elastic energy}
+In this section we only consider hyperelastic materials.
+
+\todo[inline]{Pic here}
+Consider a deformation $f$ from $n$-points $d$-dimensional material~(rest pose)~space $\Omega$ to world~(deformed)~space $f(\Omega) \in \realR^{nd \times nd}$, for every spatial point $p$, the deformation gradient is $\nabla f(p)$.
+Elastic energy can be represented by
+\begin{equation}\label{sec_FEM_elastic_potential}
+E = \int_{\Omega} \psi(\nabla f(p)) \nabla f(p) \diffd p,
+\end{equation}
+where $\psi \in \realR^{n \times n} \mapsto \realR^+$ is the~\textit{energy density function}.
+
+The energy density function can be further decomposed into
+\begin{equation}
+\psi = \psi_{material} \circ \psi_{strain},
+\end{equation}
+where $\psi_{material}$ describes material property and $\psi_{strain}$ describes geometric measure of distortion of this material.
+
+Let's consider how to use FEM to discretize the elastic energy.
+
+\todo[inline]{elaborate on this}
+We consider 3-dimensional problem, where $\psi \in \realR^{3\times 3} \mapsto \realR^+$ is given. For every tetrahedron~(tet), we define $F = \nabla f \in \realR^{3 \times 3}$. For every deformed vertex $\mathbf{x}$ and material vertex $\tilde{\mathbf{x}}$\footnote{$\mathbf{x} = (x, y, z)$}, we have $\mathbf{x} = f(\tilde{\mathbf{x}}) = F\tilde{\mathbf{x}} + b$, where $\mathbf{b}$ is a constant. For the whole tet, we have
+\begin{equation}
+\mathbf{x}_i - \mathbf{x}_4 = F(\tilde{\mathbf{x}}_i - \tilde{\mathbf{x}}_4),
+\end{equation}
+where $i \in {1,2,3,4}$ are vertex indices. This can be written as
+\begin{equation}
+D_s = F D_m,
+\end{equation}
+where 
+\begin{equation}
+D_s = \begin{pmatrix}
+x_1 - x_4 & x_2 - x_4 & x_3 - x_4 \\
+y_1 - y_4 & y_2 - y_4 & y_3 - y_4 \\
+z_1 - z_4 & z_2 - z_4 & z_3 - z_4 \\
+\end{pmatrix}, \quad
+D_m= \begin{pmatrix}
+\tilde{x}_1 - \tilde{x}_4 & \tilde{x}_2 - \tilde{x}_4 & \tilde{x}_3 - \tilde{x}_4 \\
+\tilde{y}_1 - \tilde{y}_4 & \tilde{y}_2 - \tilde{y}_4 & \tilde{y}_3 - \tilde{y}_4 \\
+\tilde{z}_1 - \tilde{z}_4 & \tilde{z}_2 - \tilde{z}_4 & \tilde{z}_3 - \tilde{z}_4 \\
+\end{pmatrix},
+\end{equation}
+thus
+\begin{equation}
+F = D_s(x)D_m^{-1}.
+\end{equation}
+The elastic energy~\eqref{sec_FEM_elastic_potential} can be discretized with
+\begin{subequations}
+\begin{align}
+E &= \sum_t \int_{E_t} \psi_t(F_t) \diffd t\\
+  &= \sum_t w_t\psi_t(F_t),
+\end{align}
+\end{subequations}
+where
+\begin{equation}
+w_t = \frac{1}{6} det\Vert D_m\Vert,
+\end{equation}
+is the volume of the tet $t$.
+
+\subsection{Vectorization}
+Before we get to the actual material property, we would introduce a vectorization scheme frequently seen in practical implementations.
+
+Recall that $\nabla f \equiv F$ is linear w.r.t. $x$, where $x$ is a collection of material space points, we have $F = G x$, where $F \in \realR^{3 \times 3}$, $x \in \realR^{3n \times 1}$, and $G$ is a tensor.
+
+\begin{mydef}
+	Let $A \in \realR^{m \times n}$, $B \in \realR^{k \times l}$, we denote the \textbf{Kronecker product} $A \otimes B$ (which is  an $mk \times nl$ matrix) with \begin{equation}
+	A \otimes B = \begin{pmatrix}
+	a_{11}B & \cdots & a_{1n}B \\
+	\vdots & \ddots & \vdots \\
+	a_{m1}B & \cdots & a_{mn}B\\
+	\end{pmatrix}.
+	\end{equation}
+\end{mydef}
+\begin{mydef}
+	We denote a \textbf{vectorization} of a matrix $A$ with
+	\begin{equation}
+	\mathrm{vec}(A) = (a_1, a_2, \cdots, a_n)^\trans.
+	\end{equation}
+\end{mydef}
+
+We further derives some lemmas:
+\begin{lemma}
+	For any given matrices $A, B, C$ and $D$, assuming the matrix dimensions agree, we have 
+	\begin{enumerate}
+		\item $(A \otimes B) \cdot (C \otimes D) = A \cdot C \otimes B \cdot D$;
+		\item $(A \otimes B)^\trans  = A^\trans \otimes B^\trans$;
+		\item $\mathrm{vec}(AX) = (I_p \otimes A) \cdot \mathrm{vec}(X) = (X^\trans \otimes I_m) \cdot \mathrm{vec}(A)$, where $A \in \realR^{m \times n}, x \in \realR^{n \times p}$.
+	\end{enumerate}
+\end{lemma}
+Then for each tet, $\mathrm{vec}(F) \in \realR^{9 \times 1}$, $G \in \realR^{9 \times 3n}$, $x \in \realR^{3n \times 1}$, and
+\begin{equation}
+	\mathrm{vec}(F)  = \mathrm{vec}(D_s \cdot D_m^{-1}) = (D_m^{-\trans} \otimes I_3) \cdot \mathrm{vec}(D_s),
+\end{equation}
+where\footnote{$x_i \in \realR^{3 \times 1}$. }
+\begin{equation}
+\mathrm{vec}(D_s) = \begin{pmatrix}
+x_1 - x_4 \\
+x_2 - x_4 \\
+x_3 - x_4
+\end{pmatrix}  = (S \cdot I_3) \cdot x \in \realR^{9 \times 1}, 
+\end{equation}
+where we define a selector matrix $S$ on each tet. $S$ is defined by
+\begin{equation}
+	S = \begin{pmatrix}
+	\cdots & 1 & \cdots & -1  & \cdots \\
+	1 & \cdots  & \cdots  & -1 & \cdots \\
+	  \cdots  &  \cdots & 1 & -1 & \cdots \\
+	\end{pmatrix},
+\end{equation}
+where the column indices of $1$s are from $x_1$, $x_2$, and $x_3$; the column index of $-1$ is from $x_4$.
+
+To sum up, for each tet:
+\begin{equation}
+\mathrm{vec}(F) = (D_m^{-\trans} \otimes I_3) ( S \otimes I_3) x = (D_m^{-\trans} \cdot S \otimes I_3) x.
+\end{equation}
+
+\subsection{Material property $\psi$}
+The deformation energy function $\psi$ is a mapping from the deformation gradient to a positive real number: $\realR^{3\times 3} \mapsto \realR^+$ (or in a vectorized form $\realR^{9 \times 1} \mapsto \realR^+$).
+
+\subsubsection{Linear elasticity}\label{sec:psi_linear}
+\begin{equation}
+\psi (F) = \Vert F - I \Vert^2_F,
+\end{equation}
+where $\Vert \cdot \Vert_F$ denotes the Frobenius norm. Linear elasticity is not rotation invariant, i.e.,
+\begin{equation}
+\psi(RF) \neq \psi(F),
+\end{equation}
+where $R \in SO(3)$.
+
+\subsubsection{Saint Venant-Kirchhoff (StVK)}\label{sec:psi_stvk}
+To make $\psi$ rotation invariant, we consider
+\begin{equation}
+\psi = \Vert F^\trans F - I \Vert^2_F,
+\end{equation}
+where $\psi_{strain} = F^\trans F - I$ is called the \textit{Green tensor}, and $\psi_{material} = \Vert \cdot \Vert^2_F$.
+
+However, the StVK model has the reflection problem. For example, consider $F_1 = \begin{pmatrix}
+1 & & \\
+ & 1 & \\
+ & & 1 \\
+\end{pmatrix}$ and $F_2 = \begin{pmatrix}
+1 & & \\
+& 1 & \\
+& & -1\\
+\end{pmatrix}$,
+ it's easy to derive $\psi(F_1) = \psi(F_2)$.
+ 
+\subsubsection{Corotated linear elasticity}\label{sec:psi_corot}
+Consider SVD decomposition $F = U \Sigma V^\trans$, where $U, V \in SO(3)$, $\Sigma = \begin{pmatrix}
+\sigma_1 & & \\
+& \sigma_2 & \\
+& & \sigma_3 \\
+\end{pmatrix}$, $\sigma_1 \geq \sigma_2 \geq \sigma_3$.
+The corotated linear elasticity is defined by
+\begin{subequations}
+	\begin{align}
+	\psi(F) &= \Vert \Sigma - I \Vert^2_F \\
+	        &= \sum^3_{i=1}(\sigma_i - 1)^2 \\
+	        &= \Vert U\Sigma V^\trans - UV^\trans \vert^2_F \\
+	        &= \Vert F - R \Vert^2_F
+	\end{align}
+\end{subequations},
+\todo[inline]{why?}
+where $R = \argmin_{x \in SO(3)} \Vert F - x \Vert^\trans_F$.
+
+\subsubsection{Volume preservation term}\label{sec:psi_vol}
+Corotated linear elasticity does not preserve volume, for example, given $F_1 = \begin{pmatrix}
+1.5 & \\ 
+ & 1.5 \\
+\end{pmatrix}$ and $F_2 = \begin{pmatrix}
+1.5 & \\
+ & 0.5 \\
+\end{pmatrix}$, it's easy to derive $\psi_{corot}(F_1) = \psi_{corot}(F_2)$.
+
+We consider adding a volume preservation term
+\begin{subequations}
+\begin{align}
+\psi_{vol}(F) &= (\mathrm{det}(F) - 1)^^2 \\
+              &= (\prod \sigma_i - 1)^2	 \\
+              &\approx (\sum \sigma_i - 3)^2 \\
+              &=[\mathrm{tr}(\Sigma - I)]^2
+\end{align}
+\end{subequations}.
+
+\subsubsection{General corotated linear elasticity}
+Combining~\ref{sec:psi_corot} and~\ref{sec:psi_vol} together, we have
+\begin{equation}
+\psi = \mu \Vert \Sigma - I\Vert^2_F + \frac{\lambda}{2} \mathrm{tr}^2(\Sigma - I),
+\end{equation}
+where $\mu$ and $\lambda$ are Lamé coefficients.
+
+
+\subsubsection{Isotropic materials}
+Given two rotations $R_1$, $R_2$ and a deformation gradient $F$, if $\psi(R_1 F R_2) = \psi(R_1 F) = \psi(F)$, then this material is isotropic.
+
+Isotropic invariants are defined by
+\begin{enumerate}
+    \item $I_1 = \tr (F^\trans F)$;
+    \item  $T_2 = \tr ((F^\trans F)^2)$;
+    \item  $J = \mathrm{det}(F)$.
+\end{enumerate}
+
+\subsubsection{Neo-Hookean material}
+The Neo-Hookean material is defined by
+\begin{equation}
+\psi(F) = \frac{\mu}{2}(I_1 - 3) - \mu \log J + \frac{\lambda}{2}\log^2 J
+\end{equation}
+It can be observed that the Neo-Hookean material is incompressible.
+
+
+\section{Fluids and Partial Differential Equations}
+
+\section{Something more...}
+
+\section{Papers and books}
+
+Numerical optimization can refer to~\cite{boyd2004convex}~\cite{nocedal2006numerical}.
+
+\cite{bonet1997nonlinear} and~\cite{sifakis2012fem} are great references for continuum mechanics and FEM.
+
+An awesome book on fluids simulation is~\cite{bridson2015fluid}.
+
+Vector calculus can be found in~\cite{petersen2008matrix}.
+
+Useful tips of C++ programming can be found in \href{https://github.com/isocpp/CppCoreGuidelines}{C++ core guidelines},~\cite{meyers2005effective}, and~\cite{meyers2014effective}.
+
+\bibliographystyle{plain}
+\bibliography{bib.bib} 
+
+\end{document}
