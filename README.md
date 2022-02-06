@@ -238,3 +238,6 @@ Awesome explanation on git.
 
 Thorough explanation on compiling/linking for C++ projects.
 
+> [Synthesis Lectures on Computer Graphics and Animation](https://www.morganclaypool.com/toc/cgr/6/3)
+
+Lots of awesome course notes.
