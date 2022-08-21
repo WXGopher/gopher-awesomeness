@@ -6,7 +6,7 @@ Enjoy :)
 
 Caution:  these notes by no means are guaranteed to be revised and coherent to the original materials (in fact, you could tell this from my poor writing XD). The way I see it is when I were grilled in an interview, I would go back to this repo and hopefully find out why instead of flipping through thousands of pages of pedantic materials, use them at your own risk.
 
-I also append a list of books/courses that I think worth reading/watching.
+I also append a list of books/courses that I think worth reading/watching. A list of my rss subscription is under /Resources/
 
 Table of Contents
 =================
