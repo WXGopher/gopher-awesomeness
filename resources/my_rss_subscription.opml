@@ -12,9 +12,12 @@
          <outline text="酷 壳 – CoolShell" title="酷 壳 – CoolShell" type="rss" xmlUrl="http://coolshell.cn/feed" />
          <outline text="刘未鹏 | Mind Hacks" title="刘未鹏 | Mind Hacks" type="rss" xmlUrl="http://mindhacks.cn/feed" />
       </outline>
+      <outline text="Graphics" title="Graphics">
+         <outline text="Graphics weekly" title="Graphics weekly" type="rss" xmlUrl="https://www.jendrikillner.com/tags/weekly/index.xml" />
+         <outline text="TOG Update" title="TOG Update" type="rss" xmlUrl="https://dl.acm.org/action/showFeed?type=etoc&amp;feed=rss&amp;jc=tog" />
+      </outline>
       <outline text="Tech" title="Tech">
          <outline text="少数派" title="少数派" type="rss" xmlUrl="https://sspai.com/feed" />
-         <outline text="TOG Update" title="TOG Update" type="rss" xmlUrl="https://dl.acm.org/action/showFeed?type=etoc&amp;feed=rss&amp;jc=tog" />
          <outline text="Hacker News: Newest" title="Hacker News: Newest" type="rss" xmlUrl="https://hnrss.org/newest?points=10" />
       </outline>
       <outline text="News" title="News">
