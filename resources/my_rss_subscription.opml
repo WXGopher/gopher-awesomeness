@@ -18,13 +18,24 @@
       </outline>
       <outline text="Tech" title="Tech">
          <outline text="少数派" title="少数派" type="rss" xmlUrl="https://sspai.com/feed" />
-         <outline text="Hacker News: Newest" title="Hacker News: Newest" type="rss" xmlUrl="https://hnrss.org/newest?points=10" />
+         <outline text="Hacker News: Newest" title="Hacker News: Newest" type="rss" xmlUrl="https://hnrss.org/newest?points=50" />
       </outline>
-      <outline text="News" title="News">
+      <outline text="NewsCN" title="NewsCN">
          <outline text="中新网财经新闻" title="中新网财经新闻" type="rss" xmlUrl="https://www.chinanews.com.cn/rss/finance.xml" />
          <outline text="中新网国际新闻" title="中新网国际新闻" type="rss" xmlUrl="https://www.chinanews.com.cn/rss/world.xml" />
          <outline text="中新网时政新闻" title="中新网时政新闻" type="rss" xmlUrl="https://www.chinanews.com.cn/rss/china.xml" />
          <outline text="南华早报" title="南华早报" type="rss" xmlUrl="https://www.scmp.com/rss/4/feed" />
+         <outline text="36氪" title="36氪" type="rss" xmlUrl="https://36kr.com/feed" />
+      </outline>
+      <outline text="NewsEN" title="NewsEN">
+         <outline text="CNBC World" title="CNBC World" type="rss" xmlUrl="https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100727362" />
+         <outline text="CNBC Earnings" title="CNBC Earnings" type="rss" xmlUrl="https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15839135" />
+         <outline text="CNBC Economy" title="CNBC Economy" type="rss" xmlUrl="https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=20910258" />
+         <outline text="CNBC Finance" title="CNBC Finance" type="rss" xmlUrl="https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664" />
+         <outline text="CNBC Tech" title="CNBC Tech" type="rss" xmlUrl="https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19854910" />
+      </outline>
+      <outline text="Misc" title="Misc">
+         <outline text="煎蛋" title="煎蛋" type="rss" xmlUrl="http://jandan.net/feed" />
       </outline>
    </body>
 </opml>
