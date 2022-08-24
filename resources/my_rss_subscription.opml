@@ -11,10 +11,16 @@
          <outline text="GeekPlux" title="GeekPlux" type="rss" xmlUrl="https://geekplux.com/atom.xml" />
          <outline text="酷 壳 – CoolShell" title="酷 壳 – CoolShell" type="rss" xmlUrl="http://coolshell.cn/feed" />
          <outline text="刘未鹏 | Mind Hacks" title="刘未鹏 | Mind Hacks" type="rss" xmlUrl="http://mindhacks.cn/feed" />
+         <outline text="Amit Chaudhary" title="Amit Chaudhary" type="rss" xmlUrl="https://amitness.com/feed.xml" />
+         <outline text="Machine Learning Mastery" title="Machine Learning Mastery" type="rss" xmlUrl="https://machinelearningmastery.com/feed/" />
+         <outline text="Sebastian Ruder" title="Sebastian Ruder" type="rss" xmlUrl="https://ruder.io/rss/index.rss" />
+         <outline text="YongYuan's homepage" title="YongYuan's homepage" type="rss" xmlUrl="https://yongyuan.name/blog/feed.xml" />
       </outline>
       <outline text="Graphics" title="Graphics">
          <outline text="Graphics weekly" title="Graphics weekly" type="rss" xmlUrl="https://www.jendrikillner.com/tags/weekly/index.xml" />
          <outline text="TOG Update" title="TOG Update" type="rss" xmlUrl="https://dl.acm.org/action/showFeed?type=etoc&amp;feed=rss&amp;jc=tog" />
+         <outline text="Unity Technologies Blog" title="Unity Technologies Blog" type="rss" xmlUrl="https://blog.unity.com/feed" />
+         <outline text="Eurographics Digital Library" title="Eurographics Digital Library" type="rss" xmlUrl="https://diglib.eg.org/feed/atom_1.0/site" />
       </outline>
       <outline text="Tech" title="Tech">
          <outline text="少数派" title="少数派" type="rss" xmlUrl="https://sspai.com/feed" />
