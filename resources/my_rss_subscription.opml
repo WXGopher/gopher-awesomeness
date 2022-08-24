@@ -20,6 +20,7 @@
          <outline text="Graphics weekly" title="Graphics weekly" type="rss" xmlUrl="https://www.jendrikillner.com/tags/weekly/index.xml" />
          <outline text="TOG Update" title="TOG Update" type="rss" xmlUrl="https://dl.acm.org/action/showFeed?type=etoc&amp;feed=rss&amp;jc=tog" />
          <outline text="Unity Technologies Blog" title="Unity Technologies Blog" type="rss" xmlUrl="https://blog.unity.com/feed" />
+         <outline text="Unreal Engine News" title="Unreal Engine News" type="rss" xmlUrl="https://www.unrealengine.com/en-us/rss" />
          <outline text="Eurographics Digital Library" title="Eurographics Digital Library" type="rss" xmlUrl="https://diglib.eg.org/feed/atom_1.0/site" />
       </outline>
       <outline text="Tech" title="Tech">
