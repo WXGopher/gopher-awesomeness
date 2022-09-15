@@ -8,7 +8,7 @@
 
 4. Specify TeX compiler in your document, add `!TEX TS-program = lualatex`. This directive is understood by most TeX IDEs. More TeX directives see [here](https://tex.stackexchange.com/questions/78101/when-and-why-should-i-use-tex-ts-program-and-tex-encoding);
 
-7. While annotating a codebase (C++ for example), in Visual Studio, change color of `XML Doc Comment` (in Tools->Options->Environment->Fonts and Colors). Start annotation using `///` instead of regular comment `//`;
+5. While annotating a codebase (C++ for example), in Visual Studio, change color of `XML Doc Comment` (in Tools->Options->Environment->Fonts and Colors). Start annotation using `///` instead of regular comment `//`;
 
 6. To work with different ssh identities on the same machine, simply change `~/.ssh/config`:
 
@@ -19,6 +19,17 @@
      User git
      AddKeysToAgent yes
      IdentityFile ~/.ssh/your_customized_id_rsa
+    ```
+
+7. One-shot `git difftool` for specific file extensions
+
+    ```
+    # set difftool
+    git config --global diff.tool bc
+    git config --global difftool.bc.path "c:/Program Files/Beyond Compare 4/bcomp.exe"
+    
+    # diff in one shot, -d for dir-diff
+    git difftool -d commit_id_1 commit_id_2 -- '*.cpp' '*.hpp'
     ```
 
     
