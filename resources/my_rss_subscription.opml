@@ -17,6 +17,7 @@
          <outline text="YongYuan's homepage" title="YongYuan's homepage" type="rss" xmlUrl="https://yongyuan.name/blog/feed.xml" />
          <outline text="Modernes CPP" title="Modernes CPP" type="rss" xmlUrl="https://www.modernescpp.com/index.php?format=feed&type=rss" />
          <outline text="阮一峰" title="Ruanyf" type="rss" xmlUrl="http://www.ruanyifeng.com/blog/atom.xml" />
+         <outline text="xkcd" title="xkcd" type="rss" xmlUrl="https://xkcd.com/atom.xml" />
       </outline>
       <outline text="Graphics" title="Graphics">
          <outline text="Graphics weekly" title="Graphics weekly" type="rss" xmlUrl="https://www.jendrikillner.com/tags/weekly/index.xml" />
