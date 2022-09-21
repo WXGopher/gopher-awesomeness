@@ -241,3 +241,7 @@ Thorough explanation on compiling/linking for C++ projects.
 > [Synthesis Lectures on Computer Graphics and Animation](https://www.morganclaypool.com/toc/cgr/6/3)
 
 Lots of awesome course notes.
+
+> [Radial Basis Interpolation](http://www.jessebett.com/Radial-Basis-Function-USRA/)
+
+An in-depth explanation for RBF interpolation for a truly newbie.
