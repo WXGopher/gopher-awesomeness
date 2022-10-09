@@ -247,3 +247,7 @@ Lots of awesome course notes.
 > [Radial Basis Interpolation](http://www.jessebett.com/Radial-Basis-Function-USRA/)
 
 An in-depth explanation for RBF interpolation for a truly newbie.
+
+> [Practical course on computing derivatives in code](https://www.cs.ucr.edu/~craigs/papers/2019-derivatives/course.pdf)
+
+Useful!
