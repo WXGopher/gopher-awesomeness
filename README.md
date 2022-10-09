@@ -220,7 +220,9 @@ Surfaces, curves, exterior calculus.... and all that shit.
 
 OpenGL shading pipeline walkthrough.
 
+> [Algebraic Geometry for Computer Graphics](https://courses.cs.washington.edu/courses/cse590b/13au/)
 
+From Jim Blinn.
 
 ### Misc.
 
