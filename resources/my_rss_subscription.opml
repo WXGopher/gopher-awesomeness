@@ -16,6 +16,7 @@
          <outline text="Sebastian Ruder" title="Sebastian Ruder" type="rss" xmlUrl="https://ruder.io/rss/index.rss" />
          <outline text="YongYuan's homepage" title="YongYuan's homepage" type="rss" xmlUrl="https://yongyuan.name/blog/feed.xml" />
          <outline text="Modernes CPP" title="Modernes CPP" type="rss" xmlUrl="https://www.modernescpp.com/index.php?format=feed&type=rss" />
+         <outline text="Dense Discovery" title="Dense Discovery" type="rss" xmlUrl="https://www.densediscovery.com/feed/" />
       </outline>
       <outline text="Graphics" title="Graphics">
          <outline text="Graphics weekly" title="Graphics weekly" type="rss" xmlUrl="https://www.jendrikillner.com/tags/weekly/index.xml" />
