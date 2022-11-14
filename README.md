@@ -220,7 +220,9 @@ Surfaces, curves, exterior calculus.... and all that shit.
 
 OpenGL shading pipeline walkthrough.
 
+> [Algebraic Geometry for Computer Graphics](https://courses.cs.washington.edu/courses/cse590b/13au/)
 
+From Jim Blinn.
 
 ### Misc.
 
@@ -241,3 +243,11 @@ Thorough explanation on compiling/linking for C++ projects.
 > [Synthesis Lectures on Computer Graphics and Animation](https://www.morganclaypool.com/toc/cgr/6/3)
 
 Lots of awesome course notes.
+
+> [Radial Basis Interpolation](http://www.jessebett.com/Radial-Basis-Function-USRA/)
+
+An in-depth explanation for RBF interpolation for a truly newbie.
+
+> [Practical course on computing derivatives in code](https://www.cs.ucr.edu/~craigs/papers/2019-derivatives/course.pdf)
+
+Useful!
