@@ -38,7 +38,6 @@
          <outline text="构建我的被动收入" title="Dawei Ma" type="rss" xmlUrl="https://www.bmpi.dev/index.xml">
          <outline text="61’s life" title="61" type="rss" xmlUrl="https://61.life/feed.xml">
          <outline text="Randy's Blog" title="Randy" type="rss" xmlUrl="https://lutaonan.com/rss.xml">
-         <outline text="Jason's Blog" title="Randy" type="rss" xmlUrl="https://lutaonan.com/rss.xml">
       </outline>
       <outline text="Misc" title="Misc">
          <outline text="xkcd" title="xkcd" type="rss" xmlUrl="https://xkcd.com/atom.xml" />
