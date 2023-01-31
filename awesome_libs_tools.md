@@ -43,36 +43,20 @@ Latest python implementation of libigl and other geometry processing stuff.
 
 3D equivalent of [pygame](https://www.pygame.org/news).
 
-
-
-## Gems
-
 > [Manim](https://3b1b.github.io/manim/index.html)
 
 To create precise animations programmatically, as seen in the videos at [3Blue1Brown](https://www.3blue1brown.com/).
 
-> [LearnLaTeX](https://www.learnlatex.org/en/)
 
-Modern, interactive, and free lessons on LaTeX.
-
-
-
-
-## Dev and productivity
-
+## Dev 
 
 >  [cmder](https://cmder.net/)
 
 Beautiful and lightweight command emulator.
 
-> [Listary](https://www.listary.com/)
-
-Boosting your efficiency by 1000%.
-
 > [Meld](http://meldmerge.org)
 
 Free/cross-platform visual diff/merge tool.
-
 > [MobaXTerm](https://mobaxterm.mobatek.net/)
 
 Modern X11 server for Windows.
@@ -85,18 +69,40 @@ If you have a pretty big monitor, you'll like it.
 
 R.I.P. to grep.
 
-> TabNine
-
-AI-driven code completion (for sublime, VS Code, etc.)
-
 > [WinDBG](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools)
 
 [Time travel debugging](https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/time-travel-debugging-record) for Windows
+
+>  [Windows Terminal](https://github.com/microsoft/terminal)
+
+An awesome terminal emulator for WSL/cmd/Powershell.
+
+## Productivity
+
+
+> [Listary](https://www.listary.com/)
+
+Boosting your efficiency by 1000%.
+
+
+> TabNine
+
+AI-driven code completion (for sublime, VS Code, etc.)
 
 > [Windows Powertoys](https://github.com/microsoft/PowerToys)
 
 A set of utilities for power users to tune and streamline their Windows 10 experience for greater productivity. 
 
->  [Windows Terminal](https://github.com/microsoft/terminal)
+>   [graphviz](https://graphviz.org/)
 
-An awesome terminal emulator for WSL/cmd/Powershell.
+From code to graph.
+
+> [Calibre Reader](https://calibre-ebook.com/download)
+
+A Goto solution to treating epub books and e-book collections.
+
+## Gems
+
+> [LearnLaTeX](https://www.learnlatex.org/en/)
+
+Modern, interactive, and free lessons on LaTeX.
