@@ -1,17 +1,3 @@
-I try to collect these pretty pieces (mostly) based on these rules:
-
-1. still under active development nowdays and have a relative large community;
-2. well-tested/documented;
-3. free/open-source.
-
-
-
-Check back often :)
-
-If you find links listed here out-of-date, feel free to drop me an email :)
-
-
-
 ## Scientific software and libraries
 
 > [CuPy](https://cupy.chainer.org/)
@@ -106,3 +92,7 @@ A Goto solution to treating epub books and e-book collections.
 > [LearnLaTeX](https://www.learnlatex.org/en/)
 
 Modern, interactive, and free lessons on LaTeX.
+
+>   [Academic phrasebank](https://www.phrasebank.manchester.ac.uk/using-cautious-language/)
+
+For those non-native speakers writing English papers.
