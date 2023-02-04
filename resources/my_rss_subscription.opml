@@ -17,6 +17,7 @@
          <outline text="Hacker News: Newest" title="Hacker News: Newest" type="rss" xmlUrl="https://hnrss.org/newest?points=50" />
          <outline text="Modernes CPP" title="Modernes CPP" type="rss" xmlUrl="https://www.modernescpp.com/index.php?format=feed&type=rss" />
          <outline text="Machine Learning Mastery" title="Machine Learning Mastery" type="rss" xmlUrl="https://machinelearningmastery.com/feed/" />
+         <outline text="游戏葡萄" title="游戏葡萄" type="rss" xmlUrl="https://api.feeddd.org/feeds/6140676d1269c358aa11072c" />
       </outline>
       <outline text="Individuals" title="Individuals">
          <outline text="Changkun's Blog" title="Changkun's Blog" type="rss" xmlUrl="https://changkun.de/blog/index.xml" />
@@ -38,6 +39,7 @@
          <outline text="构建我的被动收入" title="Dawei Ma" type="rss" xmlUrl="https://www.bmpi.dev/index.xml">
          <outline text="61’s life" title="61" type="rss" xmlUrl="https://61.life/feed.xml">
          <outline text="Randy's Blog" title="Randy" type="rss" xmlUrl="https://lutaonan.com/rss.xml">
+         <outline text="dtysky" title="dtysky" type="rss" xmlUrl="https://dtysky.moe/feeds/Create">
       </outline>
       <outline text="Misc" title="Misc">
          <outline text="xkcd" title="xkcd" type="rss" xmlUrl="https://xkcd.com/atom.xml" />
