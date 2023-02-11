@@ -41,7 +41,7 @@
          <outline text="Randy's Blog" title="Randy" type="rss" xmlUrl="https://lutaonan.com/rss.xml">
          <outline text="dtysky" title="dtysky" type="rss" xmlUrl="https://dtysky.moe/feeds/Create">
          <outline text="TraderFeed" title="Brett Steenbarger" type="rss" xmlUrl="http://traderfeed.blogspot.com/feeds/posts/default">
-         	
+         <outline text="LunaTech" title="LunaTech" type="rss" xmlUrl="	https://lunawen.com/index.xml">
       </outline>
       <outline text="Misc" title="Misc">
          <outline text="xkcd" title="xkcd" type="rss" xmlUrl="https://xkcd.com/atom.xml" />
