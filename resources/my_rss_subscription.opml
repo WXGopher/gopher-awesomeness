@@ -20,7 +20,8 @@
          <outline text="游戏葡萄" title="游戏葡萄" type="rss" xmlUrl="https://api.feeddd.org/feeds/6140676d1269c358aa11072c" />
          <outline text="游戏研究社" title="游戏研究社" type="rss" xmlUrl="https://rsshub.app/yystv/docs" />
       </outline>
-      <outline text="Individuals" title="Individuals">
+      <outline text="Blogs" title="Individuals">
+         <outline text="Microsoft C++ Dev Blog" title="Microsoft" type="rss" xmlUrl="https://devblogs.microsoft.com/cppblog/feed/" />
          <outline text="Changkun's Blog" title="Changkun's Blog" type="rss" xmlUrl="https://changkun.de/blog/index.xml" />
          <outline text="Beyond the Void" title="Beyond the Void" type="rss" xmlUrl="https://byvoid.com/zht/feed.xml" />
          <outline text="thesephist" title="thesephist" type="rss" xmlUrl="https://thesephist.com/index.xml" />
