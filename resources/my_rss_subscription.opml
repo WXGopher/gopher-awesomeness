@@ -50,7 +50,7 @@
          <outline text="v2ex latest" title="v2ex" type="rss" xmlUrl="https://rsshub.app/v2ex/topics/latest" />
       </outline>
       <outline text="Finance" title="Finance">
-         <outline text="Big Quant" title="Big Quant" type="rss" xmlUrl="https://bigquant.com/wiki/collections/c6874e5d-7f45-4e90-8cd9-5e43df3b44ef" />
+         <outline text="Big Quant" title="Big Quant" type="rss" xmlUrl="https://rsshub.app/bigquant/collections" />
       </outline>
       <outline text="NewsCN" title="NewsCN">
          <outline text="中新网财经新闻" title="中新网财经新闻" type="rss" xmlUrl="https://www.chinanews.com.cn/rss/finance.xml" />
