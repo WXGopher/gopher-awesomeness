@@ -4,14 +4,14 @@
       <title>Fluent Reader Export</title>
    </head>
    <body>
-      <outline text="Graphics and GameDev" title="Graphics">
+      <outline title="Graphics" text="Graphics and GameDev" >
          <outline text="Graphics weekly" title="Graphics weekly" type="rss" xmlUrl="https://www.jendrikillner.com/tags/weekly/index.xml" />
          <outline text="TOG Update" title="TOG Update" type="rss" xmlUrl="https://dl.acm.org/action/showFeed?type=etoc&amp;feed=rss&amp;jc=tog" />
          <outline text="Eurographics Digital Library" title="Eurographics Digital Library" type="rss" xmlUrl="https://diglib.eg.org/feed/atom_1.0/site" />
          <outline text="Unity Technologies Blog" title="Unity Technologies Blog" type="rss" xmlUrl="https://blog.unity.com/feed" />
          <outline text="Unreal Engine News" title="Unreal Engine News" type="rss" xmlUrl="https://www.unrealengine.com/en-us/rss" />
       </outline>
-      <outline text="Tech and News" title="Tech">
+      <outline title="Tech" text="Tech and News">
          <outline text="煎蛋" title="煎蛋" type="rss" xmlUrl="http://jandan.net/feed" />
          <outline text="少数派" title="少数派" type="rss" xmlUrl="https://sspai.com/feed" />
          <outline text="Hacker News: Newest" title="Hacker News: Newest" type="rss" xmlUrl="https://hnrss.org/newest?points=50" />
@@ -19,9 +19,10 @@
          <outline text="Machine Learning Mastery" title="Machine Learning Mastery" type="rss" xmlUrl="https://machinelearningmastery.com/feed/" />
          <outline text="游戏葡萄" title="游戏葡萄" type="rss" xmlUrl="https://api.feeddd.org/feeds/6140676d1269c358aa11072c" />
          <outline text="游戏研究社" title="游戏研究社" type="rss" xmlUrl="https://rsshub.app/yystv/docs" />
-      </outline>
-      <outline text="Blogs" title="Individuals">
+         <outline text="Big Quant" title="Big Quant" type="rss" xmlUrl="https://rsshub.app/bigquant/collections" />
          <outline text="Microsoft C++ Dev Blog" title="Microsoft" type="rss" xmlUrl="https://devblogs.microsoft.com/cppblog/feed/" />
+      </outline>
+      <outline title="Individuals" text="Blogs">
          <outline text="Changkun's Blog" title="Changkun's Blog" type="rss" xmlUrl="https://changkun.de/blog/index.xml" />
          <outline text="Beyond the Void" title="Beyond the Void" type="rss" xmlUrl="https://byvoid.com/zht/feed.xml" />
          <outline text="thesephist" title="thesephist" type="rss" xmlUrl="https://thesephist.com/index.xml" />
@@ -45,26 +46,9 @@
          <outline text="TraderFeed" title="Brett Steenbarger" type="rss" xmlUrl="http://traderfeed.blogspot.com/feeds/posts/default">
          <outline text="LunaTech" title="LunaTech" type="rss" xmlUrl="	https://lunawen.com/index.xml">
       </outline>
-      <outline text="Misc" title="Misc">
+      <outline title="Misc" text="Misc">
          <outline text="xkcd" title="xkcd" type="rss" xmlUrl="https://xkcd.com/atom.xml" />
-         <outline text="v2ex latest" title="v2ex" type="rss" xmlUrl="https://rsshub.app/v2ex/topics/latest" />
-      </outline>
-      <outline text="Finance" title="Finance">
-         <outline text="Big Quant" title="Big Quant" type="rss" xmlUrl="https://rsshub.app/bigquant/collections" />
-      </outline>
-      <outline text="NewsCN" title="NewsCN">
-         <outline text="中新网财经新闻" title="中新网财经新闻" type="rss" xmlUrl="https://www.chinanews.com.cn/rss/finance.xml" />
-         <outline text="中新网国际新闻" title="中新网国际新闻" type="rss" xmlUrl="https://www.chinanews.com.cn/rss/world.xml" />
-         <outline text="中新网时政新闻" title="中新网时政新闻" type="rss" xmlUrl="https://www.chinanews.com.cn/rss/china.xml" />
-         <outline text="南华早报" title="南华早报" type="rss" xmlUrl="https://www.scmp.com/rss/4/feed" />
-         <outline text="36氪" title="36氪" type="rss" xmlUrl="https://36kr.com/feed" />
-      </outline>
-      <outline text="NewsEN" title="NewsEN">
-         <outline text="CNBC World" title="CNBC World" type="rss" xmlUrl="https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100727362" />
-         <outline text="CNBC Earnings" title="CNBC Earnings" type="rss" xmlUrl="https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15839135" />
-         <outline text="CNBC Economy" title="CNBC Economy" type="rss" xmlUrl="https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=20910258" />
-         <outline text="CNBC Finance" title="CNBC Finance" type="rss" xmlUrl="https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664" />
-         <outline text="CNBC Tech" title="CNBC Tech" type="rss" xmlUrl="https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19854910" />
+         <outline text="v2ex hotest" title="v2ex" type="rss" xmlUrl="https://rsshub.app/v2ex/topics/hot" />
       </outline>
    </body>
 </opml>
