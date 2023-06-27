@@ -47,6 +47,7 @@
          <outline text="LunaTech" title="LunaTech" type="rss" xmlUrl="	https://lunawen.com/index.xml">
          <outline text="codinghorror" title=" Jeff Atwood" type="rss" xmlUrl="https://blog.codinghorror.com/rss">
          <outline text="rxliuli" title=" rxliuli" type="rss" xmlUrl="https://blog.rxliuli.com/atom.xml">
+         <outline text="justzht" title=" justzht" type="rss" xmlUrl="https://www.justzht.com/rss">
       </outline>
       <outline title="Misc" text="Misc">
          <outline text="xkcd" title="xkcd" type="rss" xmlUrl="https://xkcd.com/atom.xml" />
