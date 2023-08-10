@@ -48,6 +48,10 @@
          <outline text="codinghorror" title=" Jeff Atwood" type="rss" xmlUrl="https://blog.codinghorror.com/rss">
          <outline text="rxliuli" title=" rxliuli" type="rss" xmlUrl="https://blog.rxliuli.com/atom.xml">
          <outline text="justzht" title=" justzht" type="rss" xmlUrl="https://www.justzht.com/rss">
+         <outline text="xianmin" title=" xianmin" type="rss" xmlUrl="https://www.xianmin.org/index.xml">
+         <outline text="OneV" title=" OneV" type="rss" xmlUrl="http://onevcat.com/atom.xml">
+         <outline text="Limboy 无网不剩" title=" Limboy " type="rss" xmlUrl="https://feeds.feedburner.com/lzyy">
+         <outline text="唐巧的技术博客" title=" 唐巧" type="rss" xmlUrl="   http://blog.devtang.com/atom.xml">
       </outline>
       <outline title="Misc" text="Misc">
          <outline text="xkcd" title="xkcd" type="rss" xmlUrl="https://xkcd.com/atom.xml" />
