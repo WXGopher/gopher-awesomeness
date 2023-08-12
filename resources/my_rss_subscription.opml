@@ -29,7 +29,6 @@
          <outline text="酷 壳" title="酷 壳" type="rss" xmlUrl="http://coolshell.cn/feed" />
          <outline text="刘未鹏" title="刘未鹏" type="rss" xmlUrl="http://mindhacks.cn/feed" />
          <outline text="Amit Chaudhary" title="Amit Chaudhary" type="rss" xmlUrl="https://amitness.com/feed.xml" />
-         <outline text="Sebastian Ruder" title="Sebastian Ruder" type="rss" xmlUrl="https://ruder.io/rss/index.rss" />
          <outline text="YongYuan's homepage" title="YongYuan's homepage" type="rss" xmlUrl="https://yongyuan.name/blog/feed.xml" />
          <outline text="Dense Discovery" title="Dense Discovery" type="rss" xmlUrl="https://www.densediscovery.com/feed/" />
          <outline text="阮一峰" title="Ruanyf" type="rss" xmlUrl="http://www.ruanyifeng.com/blog/atom.xml" />
