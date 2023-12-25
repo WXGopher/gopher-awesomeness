@@ -2,7 +2,7 @@
 
 <opml version="1.0">
     <head>
-        <title>Wenxian subscriptions in feedly Cloud</title>
+        <title></title>
     </head>
     <body>
         <outline text="Individuals" title="Individuals">
@@ -36,7 +36,7 @@
             <outline type="rss" text="BMPI" title="BMPI" xmlUrl="https://www.bmpi.dev/index.xml" htmlUrl="https://www.bmpi.dev/"/>
             <outline type="rss" text="Beyond the Void" title="Beyond the Void" xmlUrl="https://byvoid.com/zht/feed.xml" htmlUrl="https://byvoid.com/zht/"/>
             <outline type="rss" text="61’s life" title="61’s life" xmlUrl="https://61.life/feed.xml" htmlUrl="http://61.life/"/>
-            <outline type="rss" text="Raye's Journey" title="Raye's Journey" xmlUrl="https://raye.xlog.app/feed" htmlUrl="https://raye.xlog.app"/>
+            <outline type="rss" text="Raye's Journey" title="Raye's Journey" xmlUrl="https://raye.xlog.app/feed" htmlUrl="https://rayepeng.net"/>
             <outline type="rss" text="YongYuan's homepage" title="YongYuan's homepage" xmlUrl="https://yongyuan.name/blog/feed.xml" htmlUrl="https://yongyuan.name"/>
             <outline type="rss" text="Changkun" title="Changkun" xmlUrl="https://changkun.de/blog/index.xml" htmlUrl="https://changkun.de/blog/"/>
             <outline type="rss" text="@Lenciel" title="@Lenciel" xmlUrl="https://lenciel.com/feed.xml" htmlUrl="https://lenciel.com/"/>
@@ -49,6 +49,18 @@
             <outline type="rss" text="thesephist" title="thesephist" xmlUrl="https://thesephist.com/index.xml" htmlUrl="https://thesephist.com/"/>
             <outline type="rss" text="Randy's Blog" title="Randy's Blog" xmlUrl="https://lutaonan.com/rss.xml" htmlUrl="https://lutaonan.com/"/>
         </outline>
+        <outline text="Graphics" title="Graphics">
+            <outline type="rss" text="Eurographics Digital Library" title="Eurographics Digital Library" xmlUrl="https://diglib.eg.org/feed/atom_1.0/site" htmlUrl="http://diglib.eg.org:80"/>
+            <outline type="rss" text="Graphics weekly" title="Graphics weekly" xmlUrl="https://www.jendrikillner.com/tags/weekly/index.xml" htmlUrl="https://www.jendrikillner.com/tags/weekly/"/>
+            <outline type="rss" text="TOG Update" title="TOG Update" xmlUrl="https://dl.acm.org/action/showFeed?type=etoc&amp;feed=rss&amp;jc=tog" htmlUrl="https://dl.acm.org/loi/tog?af=R"/>
+        </outline>
+        <outline text="Chrome" title="Chrome">
+            <outline type="rss" text="Chromium Blog" title="Chromium Blog" xmlUrl="http://blog.chromium.org/feeds/posts/default" htmlUrl="http://blog.chromium.org/"/>
+            <outline type="rss" text="V8" title="V8" xmlUrl="https://v8.dev/blog.atom" htmlUrl="https://v8.dev/"/>
+            <outline type="rss" text="developer.chrome.com: Blog" title="developer.chrome.com: Blog" xmlUrl="https://developer.chrome.com/static/blog/feed.xml" htmlUrl="https://developer.chrome.com/blog/"/>
+            <outline type="rss" text="Google Chrome Security Bulletins" title="Google Chrome Security Bulletins" xmlUrl="https://advisories.feedly.com/google/chrome/feed.json" htmlUrl="https://chromereleases.googleblog.com/"/>
+            <outline type="rss" text="Google Chrome" title="Google Chrome" xmlUrl="http://chrome.blogspot.com/atom.xml" htmlUrl="https://blog.google/products/chrome/"/>
+        </outline>
         <outline text="Misc" title="Misc">
             <outline type="rss" text="xkcd" title="xkcd" xmlUrl="https://xkcd.com/atom.xml" htmlUrl="https://xkcd.com/"/>
             <outline type="rss" text="游戏研究社" title="游戏研究社" xmlUrl="https://rsshub.app/yystv/docs" htmlUrl="https://www.yystv.cn/docs"/>
@@ -57,31 +69,28 @@
             <outline type="rss" text="v2ex" title="v2ex" xmlUrl="https://rsshub.app/v2ex/topics/hot" htmlUrl="https://www.v2ex.com/"/>
             <outline type="rss" text="瞎扯 - 知乎日报" title="瞎扯 - 知乎日报" xmlUrl="http://zhihurss.miantiao.me/section/id/2" htmlUrl="https://daily.zhihu.com"/>
         </outline>
-        <outline text="Graphics" title="Graphics">
-            <outline type="rss" text="Eurographics Digital Library" title="Eurographics Digital Library" xmlUrl="https://diglib.eg.org/feed/atom_1.0/site" htmlUrl="https://diglib.eg.org:443"/>
-            <outline type="rss" text="Graphics weekly" title="Graphics weekly" xmlUrl="https://www.jendrikillner.com/tags/weekly/index.xml" htmlUrl="https://www.jendrikillner.com/tags/weekly/"/>
-            <outline type="rss" text="TOG Update" title="TOG Update" xmlUrl="https://dl.acm.org/action/showFeed?type=etoc&amp;feed=rss&amp;jc=tog" htmlUrl="https://dl.acm.org/loi/tog?af=R"/>
-            <outline type="rss" text="Unreal Engine News" title="Unreal Engine News" xmlUrl="https://www.unrealengine.com/en-us/rss" htmlUrl="https://www.unrealengine.com/rss"/>
-        </outline>
-        <outline text="News" title="News">
+        <outline text="X2" title="X2"/>
+        <outline text="X1" title="X1"/>
+        <outline text="News-EN" title="News-EN">
             <outline type="rss" text="Finance" title="Finance" xmlUrl="http://www.cnbc.com/id/10000664/device/rss/rss.html" htmlUrl="https://www.cnbc.com/finance/"/>
-            <outline type="rss" text="World - South China Morning Post" title="World - South China Morning Post" xmlUrl="http://www.scmp.com/rss/5/feed" htmlUrl="https://www.scmp.com/rss/5/feed"/>
+            <outline type="rss" text="International: Top News And Analysis" title="International: Top News And Analysis" xmlUrl="http://www.cnbc.com/id/100727362/device/rss/rss.html" htmlUrl="https://www.cnbc.com/world-top-news/"/>
+            <outline type="rss" text="South China Morning Post - News feed" title="South China Morning Post - News feed" xmlUrl="http://feeds.scmp.com/rssfeed/output/scmp/102080/allinone/" htmlUrl="http://feeds.scmp.com/rssfeed/output/scmp/102080/allinone"/>
+        </outline>
+        <outline text="News-CN" title="News-CN">
             <outline type="rss" text="《联合早报》-国际-新闻" title="《联合早报》-国际-新闻" xmlUrl="https://rsshub.app/zaobao/znews/world" htmlUrl="https://www.zaobao.com/news/world"/>
             <outline type="rss" text="《联合早报》-中国-新闻" title="《联合早报》-中国-新闻" xmlUrl="https://rsshub.app/zaobao/znews/greater-china" htmlUrl="https://www.zaobao.com/news/china"/>
-            <outline type="rss" text="News - South China Morning Post" title="News - South China Morning Post" xmlUrl="http://www.scmp.com/rss/91/feed" htmlUrl="https://www.scmp.com/rss/91/feed"/>
-            <outline type="rss" text="International: Top News And Analysis" title="International: Top News And Analysis" xmlUrl="http://www.cnbc.com/id/100727362/device/rss/rss.html" htmlUrl="https://www.cnbc.com/world-top-news/"/>
+        </outline>
+        <outline text="Legacy" title="Legacy">
+            <outline type="rss" text="QUANTITATIVE RESEARCH AND TRADING" title="QUANTITATIVE RESEARCH AND TRADING" xmlUrl="http://jonathankinlay.com/index.php/feed/" htmlUrl="http://jonathankinlay.com/"/>
+            <outline type="rss" text="十年之约——专题展示" title="十年之约——专题展示" xmlUrl="https://rsshub.app/foreverblog/feeds" htmlUrl="https://www.foreverblog.cn/feeds.html"/>
+            <outline type="rss" text="xLog Hottest/Week" title="xLog Hottest/Week" xmlUrl="https://xlog.app/feed/hottest?interval=7" htmlUrl="https://xlog.app/"/>
         </outline>
         <outline text="Tech" title="Tech">
-            <outline type="rss" text="QUANTITATIVE RESEARCH AND TRADING" title="QUANTITATIVE RESEARCH AND TRADING" xmlUrl="http://jonathankinlay.com/index.php/feed/" htmlUrl="http://jonathankinlay.com/"/>
             <outline type="rss" text="Quantocracy, Author at Quantocracy" title="Quantocracy, Author at Quantocracy" xmlUrl="https://feeds.feedburner.com/Quantocracy" htmlUrl="https://quantocracy.com/author/quantadmin/"/>
             <outline type="rss" text="少数派" title="少数派" xmlUrl="https://sspai.com/feed" htmlUrl="https://sspai.com"/>
             <outline type="rss" text="Microsoft" title="Microsoft" xmlUrl="https://devblogs.microsoft.com/cppblog/feed" htmlUrl="https://devblogs.microsoft.com/cppblog/"/>
             <outline type="rss" text="Hacker News: Newest" title="Hacker News: Newest" xmlUrl="https://hnrss.org/newest?points=199" htmlUrl="https://news.ycombinator.com/newest"/>
-        </outline>
-        <outline text="Legacy" title="Legacy">
-            <outline type="rss" text="xLog Latest" title="xLog Latest" xmlUrl="https://xlog.app/feed/latest" htmlUrl="https://xlog.app/"/>
-            <outline type="rss" text="十年之约——专题展示" title="十年之约——专题展示" xmlUrl="https://rsshub.app/foreverblog/feeds" htmlUrl="https://www.foreverblog.cn/feeds.html"/>
-            <outline type="rss" text="xLog Hottest/Week" title="xLog Hottest/Week" xmlUrl="https://xlog.app/feed/hottest?interval=7" htmlUrl="https://xlog.app/"/>
+            <outline type="rss" text="FreeBuf网络安全行业门户" title="FreeBuf网络安全行业门户" xmlUrl="http://www.freebuf.com/feed" htmlUrl="https://www.freebuf.com"/>
         </outline>
     </body>
 </opml>
